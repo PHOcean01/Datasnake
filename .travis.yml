@@ -1,4 +1,9 @@
-language: ruby
-rvm:
- - 2.2
- - jruby
+language: python
+
+jobs:
+  include:
+    - script: ./test 1 # uses the default stage name "test"
+    - script: ./test 2
+    - stage: deploy
+      script: ./deploy target-1
+    - script: ./deploy target-2
